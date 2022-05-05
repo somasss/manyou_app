@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :タスク名 %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :詳細 %>
+    <%= form.text_field :detail %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

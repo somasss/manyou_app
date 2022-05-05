@@ -28,7 +28,7 @@ class TasksController < ApplicationController
         format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity}
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +65,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.fetch(:task, {})
+      params.require(:task).permit(:name, :detail)
     end
 end
