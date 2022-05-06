@@ -1,12 +1,12 @@
 User model
-  name 
-  email
-  password_digest
+  name t.string
+  email t.string
+  password_digest t.string
 
 Task model
-  name
-  detail
-  importance
-  status
-  lable
-  deadline
+  name t.string
+  detail t.string
+  importance t.string
+  status t.string
+  lable t.string
+  deadline t.string
