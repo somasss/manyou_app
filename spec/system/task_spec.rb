@@ -30,7 +30,6 @@ RSpec.describe 'タスク管理機能', type: :system do
         id = task.id
         visit tasks_path(id)
         expect(page).to have_content 'task'
-
        end
      end
   end

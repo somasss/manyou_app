@@ -1,12 +1,12 @@
-User model
-  name t.string
-  email t.string
-  password_digest t.string
+|user|
+|user ❘name ❘ t.string ❘  
+|user ❘email ❘t.string ❘  
+|user ❘password_digest ❘ t.string ❘ 
 
-Task model
-  name t.string
-  detail t.string
-  importance t.string
-  status t.string
-  lable t.string
-  deadline t.string
+|Task|
+|Task ❘name ❘ t.string ❘  
+|Task ❘detail ❘ t.string ❘  
+|Task ❘importance ❘ t.string ❘
+|Task ❘status ❘ t.string ❘  
+|Task ❘lable ❘ t.string ❘  
+|Task ❘deadline ❘ t.string ❘ 
