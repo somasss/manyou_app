@@ -1,24 +1,23 @@
-# README
+|user|
+|user ❘name ❘ t.string ❘  
+|user ❘email ❘t.string ❘  
+|user ❘password_digest ❘ t.string ❘ 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Task|
+|Task ❘name ❘ t.string ❘  
+|Task ❘detail ❘ t.string ❘  
+|Task ❘importance ❘ t.string ❘
+|Task ❘status ❘ t.string ❘  
+|Task ❘lable ❘ t.string ❘  
+|Task ❘deadline ❘ t.string ❘ 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+heroku 
+----------
+| heroku login |
+| ------------ |
+| git add . |
+| --------- |
+| git commit -m "step2" |
+| --------------------- |
+| git push heroku step2:master |
+| ---------------------------- |
