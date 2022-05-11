@@ -21,6 +21,23 @@
     <%= form.text_field :detail %>
   </div>
 
+  <div class="field">
+    <%= form.label :終了期限 %>
+    <%= form.date_field :deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ステータス %>
+    <%= form.select :status, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"]], include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :優先度 %>
+    <%= form.select :importance, Task.importances.keys, {prompt: "選択してください"} %>
+  </div>
+
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
