@@ -10,3 +10,14 @@
 |Task ❘status ❘ t.string ❘  
 |Task ❘lable ❘ t.string ❘  
 |Task ❘deadline ❘ t.string ❘ 
+
+heroku 
+----------
+| heroku login |
+| ------------ |
+| git add . |
+| --------- |
+| git commit -v "step2" |
+| --------------------- |
+| git push heroku step2:master |
+| ---------------------------- |
