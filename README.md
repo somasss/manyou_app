@@ -17,7 +17,7 @@ heroku
 | ------------ |
 | git add . |
 | --------- |
-| git commit -v "step2" |
+| git commit -m "step2" |
 | --------------------- |
 | git push heroku step2:master |
 | ---------------------------- |
