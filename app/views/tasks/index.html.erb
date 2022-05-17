@@ -9,14 +9,14 @@
     <%= form.text_field :search %>
     <%= form.label :ステータス %>
     <%= form.select :status_serch, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"]], include_blank: "選択して下さい" %>
-    <%= form.submit 'Search', name: nil %>
+    <button type="search" class="btn btn-warning">検索</button>
   </div>
 
 <% end %>
 
 <table>
   <thead>
-    <tr>
+    <tr class="table table table-bordered">
     <th>タスク名</th>
     <th>詳細</th>
     <th>進行度</th>
@@ -28,7 +28,7 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr class = "task_all">
+      <tr class = "task_all table table-bordered">
       <td><%= task.name %></td>
       <td><%= task.detail %></td>
       <td><%= task.status %></td>
