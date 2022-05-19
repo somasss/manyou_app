@@ -2,20 +2,38 @@
 
 <h1>Tasks</h1>
 
+<%= form_with url: tasks_path, method: :get, local: true do |form| %>
+  <%= paginate @tasks %>
+  <div>
+    <%= form.label :検索 %>
+    <%= form.text_field :search %>
+    <%= form.label :ステータス %>
+    <%= form.select :status_serch, [["未着手", "未着手"], ["着手", "着手"], ["完了", "完了"]], include_blank: "選択して下さい" %>
+    <button type="search" class="btn btn-warning">検索</button>
+  </div>
+
+<% end %>
+
 <table>
   <thead>
-    <tr>
+    <tr class="table table table-bordered">
     <th>タスク名</th>
     <th>詳細</th>
+    <th>進行度</th>
+    <th><%= link_to "優先度", tasks_path(sort_importance: "true") %></th>
+    <th><%= link_to "終了期限", tasks_path(sort_expired: "true") %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr class = "task_all">
+      <tr class = "task_all table table-bordered">
       <td><%= task.name %></td>
       <td><%= task.detail %></td>
+      <td><%= task.status %></td>
+      <td><%= task.importance %></td>
+      <td><%= task.deadline %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
