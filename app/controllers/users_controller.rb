@@ -15,7 +15,11 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new 
+    if logged_in?
+      redirect_to users_path
+    else
+      @user = User.new 
+    end
   end
 
 
@@ -26,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "登録に成功しました" }
         format.json { render :show, status: :created, location: @user }
       else

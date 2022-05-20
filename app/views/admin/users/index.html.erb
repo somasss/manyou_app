@@ -4,7 +4,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr class="table table table-bordered">
       <th>名前</th>
       <th>Email</th>
       <th>投稿数</th>
@@ -14,7 +14,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class="table table table-bordered">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.tasks.count %></td>

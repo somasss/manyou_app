@@ -1,2 +1,2 @@
-user = User.new(:name => "first",:email => 'first@email.com', :password_digest => 'first')
+user = User.new(:name => "seed",:email => 'first@email.com', :password => 'seedseed', :admin => false)
 user.save!

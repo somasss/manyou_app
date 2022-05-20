@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  include UsersHelper
   skip_before_action :login_required, only: [:new, :create]
   before_action :set_user, only: %i[ show edit update destroy ]
 
@@ -21,7 +22,7 @@ class Admin::UsersController < ApplicationController
 
 
   def show
-    
+    redirect_to tasks_path unless accessible_user
   end
 
 
