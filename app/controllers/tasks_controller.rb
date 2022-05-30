@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     @tasks = task.importance.page(params[:page]).per(5) if params[:sort_importance].present?
     @tasks = @tasks.name_search(params[:search]).page(params[:page]).per(5) if params[:search].present?
     @tasks = @tasks.status_serch( params[:status_serch]).page(params[:page]).per(5) if params[:status_serch].present? 
+    @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -70,10 +71,12 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :detail, :deadline, :status, :importance, :user_id)
+      params.require(:task).permit(:name, :detail, :deadline, :status, :importance, :user_id, { label_ids: [] })
     end
 
     def sort_params
       params.permit(:sort)
-    end
+    end    
+
+
 end
