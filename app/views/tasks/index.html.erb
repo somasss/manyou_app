@@ -19,6 +19,7 @@
     <tr class="table table table-bordered">
     <th>タスク名</th>
     <th>詳細</th>
+    <th>製作者名</th>
     <th>進行度</th>
     <th><%= link_to "優先度", tasks_path(sort_importance: "true") %></th>
     <th><%= link_to "終了期限", tasks_path(sort_expired: "true") %></th>
@@ -31,6 +32,7 @@
       <tr class = "task_all table table-bordered">
       <td><%= task.name %></td>
       <td><%= task.detail %></td>
+      <td><%= task.user.name %></td>
       <td><%= task.status %></td>
       <td><%= task.importance %></td>
       <td><%= task.deadline %></td>

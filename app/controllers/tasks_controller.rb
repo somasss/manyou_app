@@ -3,16 +3,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    # if params[:sort_expired] == "true" 
-    #     @tasks = Task.all.order(deadline: :asc)
-    #   elsif 
-    #     @tasks = Task.all.order(created_at: :desc)
-    # end
-    # @tasks = @tasks.where(status: params[:status_serch]) if params[:status_serch].present? 
-    # @tasks = @tasks.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
-    @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(5)
-    @tasks = Task.latest.page(params[:page]).per(5) if params[:sort_expired].present?
-    @tasks = Task.importance.page(params[:page]).per(5) if params[:sort_importance].present?
+    task = current_user.tasks 
+    @tasks = task.all.order(created_at: :desc).page(params[:page]).per(5)
+    @tasks = task.latest.page(params[:page]).per(5) if params[:sort_expired].present?
+    @tasks = task.importance.page(params[:page]).per(5) if params[:sort_importance].present?
     @tasks = @tasks.name_search(params[:search]).page(params[:page]).per(5) if params[:search].present?
     @tasks = @tasks.status_serch( params[:status_serch]).page(params[:page]).per(5) if params[:status_serch].present? 
   end
@@ -33,7 +27,7 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
-
+    @task.user_id = current_user.id
     respond_to do |format|
       if @task.save
         format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
@@ -76,7 +70,7 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :detail, :deadline, :status, :importance)
+      params.require(:task).permit(:name, :detail, :deadline, :status, :importance, :user_id)
     end
 
     def sort_params

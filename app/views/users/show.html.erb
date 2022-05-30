@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+ <h1>ユーザー詳細ページ</h1>
+  <strong>ユーザー名:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email</strong>
+  <%= @user.email %>
+</p>
+
+<table>
+  <thead>
+    <tr class="table table table-bordered">
+      <th>作成者名</th>
+      <th>タスク名</th>
+      <th>詳細</th>
+      <th>締切</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.tasks.each do |task| %>
+      <tr class="table table table-bordered">
+        <td><%= task.user.name %></td>
+        <td><%= task.name %></td>
+        <td><%= task.detail %></td>
+        <td><%= task.deadline %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
