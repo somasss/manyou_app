@@ -36,6 +36,11 @@
     <%= form.select :importance, Task.importances.keys, {prompt: "選択してください"} %>
   </div>
 
+  <div class="field">
+  <%= form.label :タグ %>
+  <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+  </div>
+
 
 
   <div class="actions">

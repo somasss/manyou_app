@@ -14,4 +14,17 @@ FactoryBot.define do
     password_confirmation{"zzzzzz"}
     admin {true}
   end
+
+  factory :user3, class: User do
+    name {"t"}
+    email{"t@gmail.com"}
+    password{"tttttt"}
+    password_confirmation{"tttttt"}
+    admin {true}
+    trait :with_a_task_and_label do
+      after(:build) do |user|
+        user.task << FactoryBot.build(:task, :with_label)
+      end
+    end
+  end
 end
