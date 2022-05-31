@@ -19,7 +19,6 @@ RSpec.describe 'タグ機能', type: :system do
         check 'デイリー'
         click_on '登録する'
         visit tasks_path
-        binding.irb
         expect(page).to have_content'デイリー'
       end
     end

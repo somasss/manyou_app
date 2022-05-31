@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  %W[a b c d e f g h i j k].each { |a| Label.create(name: a) } if @labels.blank?
 
   # GET /tasks or /tasks.json
   def index
@@ -77,6 +78,4 @@ class TasksController < ApplicationController
     def sort_params
       params.permit(:sort)
     end    
-
-
 end
